@@ -1,0 +1,19 @@
+{
+  "name": "health_science_new",
+  "version": "1.0.0",
+  "description": "datathon project",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjsigmon/health_science.git"
+  },
+  "author": "caleb and zach",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjsigmon/health_science/issues"
+  },
+  "homepage": "https://github.com/cjsigmon/health_science#readme"
+}
