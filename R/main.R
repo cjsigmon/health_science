@@ -1,4 +1,19 @@
+########################################
+##      CDC23 Health Science Data     ##
+##              - Main -              ##
+########################################
+
+## Set Up -----------------------------
+
+# load packages/functions
 library(plumber)
-# 'plumber.R' is the location of the file shown above
-pr("plumber.R") %>%
+source("R/helper_functions.R")
+
+# import data
+diab.df <- import_data()
+
+
+## Plumber -----------------------------
+
+pr("R/plumber.R") %>%
   pr_run(port=8000)
