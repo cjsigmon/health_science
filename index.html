@@ -1,19 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Plumber API Request</title>
 </head>
 <body>
-    <h1>Health Science Diabetes</h1>
-    <p>CDC 2023</p>
+    <div id="response"></div>
 
-    <iframe src="http://127.0.0.1:6880/echo?msg=hello"></iframe>
-    <!-- <button type="button" onclick="loadDoc()">Change Content</button> -->
-    
+    <script>
+        // Define the API URL
+        const apiUrl = 'http://127.0.0.1:8000/echo?msg=hey';
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="index.js"></script>
+        // Make a GET request to the API using fetch
+        fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Accept': '*/*'
+            }
+        })
+        .then(response => {
+            // Check if the response is OK (status code 200)
+            if (response.status === 200) {
+                return response.json();
+            } else {
+                throw new Error('Failed to fetch data from the API');
+            }
+        })
+        .then(data => {
+            // Handle the JSON response
+            const responseElement = document.getElementById('response');
+            responseElement.innerText = JSON.stringify(data, null, 2);
+        })
+        .catch(error => {
+            // Handle any errors that occurred during the fetch
+            console.error(error);
+            const responseElement = document.getElementById('response');
+            responseElement.innerText = 'Error: ' + error.message;
+        });
+    </script>
 </body>
 </html>
