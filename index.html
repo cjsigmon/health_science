@@ -4,8 +4,56 @@
     <title>Plumber API Request</title>
 </head>
 <body>
-    <div id="response"></div>
 
-    <script src="index.js"></script>
+    <div id="response-container">
+        <!-- The API response will be displayed here -->
+        TYPE SOMETHING DADDDYYY
+    </div>
+    <form id="myForm" onsubmit="onSubmitForm(event)">
+        <label for="textField">Enter Text:</label>
+        <input type="text" id="textField" name="textField">
+        <input type="submit" value="Submit">
+    </form>
+
+
+
+
+    <script>
+        
+
+        const responseContainer = document.getElementById("response-container");
+
+
+        function onSubmitForm(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+    const textFieldValue = document.getElementById("textField").value;
+    updateText(textFieldValue);
+}
+
+
+
+
+
+
+
+
+
+        function updateText(end) {
+        // Make an HTTP GET request to your Node.js server
+        const URL = "http://localhost:3000/" + end;
+        console.log(URL)
+        fetch(URL)
+            .then(response => response.json()) // Parse the response as JSON
+            .then(data => {
+
+            // Update the HTML content with the received data
+            responseContainer.textContent = data.msg; // Assuming your API returns an object with a 'msg' property
+            })
+            .catch(error => {
+            console.error("Error:", error);
+            });
+        }
+
+    </script>
 </body>
 </html>
