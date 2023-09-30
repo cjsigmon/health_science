@@ -7,35 +7,11 @@
     <div id="response"></div>
 
     <script>
-        // Define the API URL
-        const apiUrl = 'http://127.0.0.1:8000/echo?msg=hey';
+        fetch("http://127.0.0.1:8000/echo?msg=hellow")
+            .then(response => {
+                console.log(response);
+            })
 
-        // Make a GET request to the API using fetch
-        fetch(apiUrl, {
-            method: 'GET',
-            headers: {
-                'Accept': '*/*'
-            }
-        })
-        .then(response => {
-            // Check if the response is OK (status code 200)
-            if (response.status === 200) {
-                return response.json();
-            } else {
-                throw new Error('Failed to fetch data from the API');
-            }
-        })
-        .then(data => {
-            // Handle the JSON response
-            const responseElement = document.getElementById('response');
-            responseElement.innerText = JSON.stringify(data, null, 2);
-        })
-        .catch(error => {
-            // Handle any errors that occurred during the fetch
-            console.error(error);
-            const responseElement = document.getElementById('response');
-            responseElement.innerText = 'Error: ' + error.message;
-        });
     </script>
 </body>
 </html>
